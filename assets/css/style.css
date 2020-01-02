@@ -1,0 +1,16 @@
+h1 {    background-color: #333333;
+        color: #ffffff;
+        text-align: center;
+        padding: 10px;
+    }
+li {border: 1px solid gray;
+    background-color: #ffffff;
+    padding: 7px;
+    width: 100%;
+}
+.container {    margin-left: 0;
+                margin-right: 0;
+                background-color: #eeeeee;
+    }
+.mainDash { background-color: #ffffff;
+    }
