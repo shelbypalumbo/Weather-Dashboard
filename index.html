@@ -26,24 +26,34 @@
       <h1>Weather Dashboard</h1>
     </header>
     <div class="container">
-        <div class="row">
+      <div class="row">
             <div class="side-bar col-md-4">
                 <h3>Search for a City:</h3>
                         <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                            <button class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+                            <input id="searchInput" class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                            <button id="searchBtn" class="btn btn-primary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     <ul class="nav flex-column">
                             <li class="nav-item">
-                              <a class="nav-link active" href="#"></a>
+                              <a class="nav-link" href="#"></a>
                     </ul>
             </div>
 
-            <div class="mainDash col-md-8"></div>
-        </div>
+            <div id="mainDash col-md-8">
+              <div class="city"></div>
+              <div class="date"></div>
+              <div class="tempF"></div>
+              <div class="humidity"></div>
+              <div class="wind"></div>
+            </div>  
+      </div>
+      
+      <div class="row fiveDay">
+
+      </div>
 
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <script src="https://unpkg.com/moment"></script>

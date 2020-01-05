@@ -6,11 +6,12 @@ h1 {    background-color: #333333;
 li {border: 1px solid gray;
     background-color: #ffffff;
     padding: 7px;
+    margin:5px;
     width: 100%;
 }
-.container {    margin-left: 0;
-                margin-right: 0;
-                background-color: #eeeeee;
+
+.side-bar { background-color: #eeeeee;
     }
-.mainDash { background-color: #ffffff;
+#mainDash { background-color: #ffffff;
+            margin: 20px;
     }
