@@ -35,20 +35,20 @@ $(document).ready(function () {
       url: queryURLFiveDay,
       method: "GET"
     }).then(function (response) {
-      console.log
+    
       var days =[[3],[11],[19],[27],[35]];
-      
+      var fiveDay =$(".fiveDay");
       for (i=0; i < days.length; i++){
-        $(".fiveDay").append("<div class='dayContainer col-2'>");
+       var dayContainer = $("<div class='dayContainer col-2'>");
         var city = $("<li>").text("City: " + response.city.name);
         var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
         var temp = $("<li>").text("Temperature: " + tempF.toFixed(0) + " F");
         var humidity = $("<li>").text("Humidity: " + response.list[i].main.humidity + "%");
-        $(".dayContainer").append(city, temp, humidity);
+        dayContainer.append(city, temp, humidity);
+        fiveDay.append(dayContainer);
       }
-    
     })
-
+   
 
   })
 
