@@ -1,29 +1,43 @@
+body {  font-family: 'Niramit', sans-serif;
+}
+
 h1 {    background-color: #333333;
         color: #ffffff;
         text-align: center;
         padding: 10px;
     }
 
-.nav-item { border: 1px solid gray;
-            background-color: #ffffff;
+h2 {    color: #333333;
+}
+#searchBtn { background-color: rgb(0, 47, 255);
+}
+.nav-item { border: 1px solid #fffdfdaf; 
             padding: 7px;
             margin: 5px;
             width: 100%;
     }
 
-.side-bar { background-color: #eeeeee;
+.side-bar { background-color:  #fffdfdaf;
     }
 
-#mainDash { background-color: #ffffff;
+.mainDash { background-color: #ffffff;
             margin: 20px;
+            display:none;
     }
 
 li {    list-style: none;
     }
 
 .dayContainer { padding: 10px;
-                border: 1px solid gray;
+                border: 1px solid#ffffff;
                 border-radius: 30px;
-                background-color: blue;
+                background-color: rgba(0, 217, 255, 0.842);
                 color: #ffffff;
+    }
+.UV {   background-color: red;
+        color: #ffffff;
+        width: 15%;
+        border-radius: 30px;
+        padding: 2px;
+        font-size: 10pt;
     }
