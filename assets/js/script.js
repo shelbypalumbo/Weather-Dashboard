@@ -11,7 +11,7 @@ $(document).ready(function () {
     var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" +
       place + "&APPID=6a120126c9f8309dcaf580415f4194b1";
 
-    var pastPlace = $("<li class='.nav-item'>").text(place);
+    var pastPlace = $("<li class='.nav-item'>").html("<a>" + queryURLCurrent + "</a>");
     $(".nav-link").append(pastPlace);
    
 //-------Current Weather Conditions for place-------------------------------------------------
@@ -20,13 +20,17 @@ $(document).ready(function () {
       method: "GET"
     }).then(function (response) {
       $(".city").html("<h2>" + response.name + " " + response.sys.country + "</h2>");
-      var icon = $("<img>").attr("src", response.weather[0].icon);
-      $(".city").append(icon);
+      var icon = response.weather[0].icon;
+      var imgSrc = "https://openweathermap.org/img/wn/" + icon + ".png";
+      var iconImg = $("<img>").attr("src", imgSrc);
+      iconImg.attr("alt", response.weather[0].main);
+      $(".icon").html(iconImg);
       $(".date").html("<h3>" + currentDate + "</h3>");
       $(".wind").text("Wind Speed: " + response.wind.speed + "mph");
       $(".humidity").text("Humidity Level: " + response.main.humidity + "%");
       var tempF = (response.main.temp - 273.15) * 1.80 + 32;
       $(".tempF").text("Temperature : " + tempF.toFixed(0) + " F");
+      
       
      
 //-------UV Index Data----------------------------------------------------------------------------
@@ -49,22 +53,25 @@ $.ajax({
       url: queryURLFiveDay,
       method: "GET"
     }).then(function fiveDayForecast(response) {
-      var days =[[3],[11],[19],[27],[35]];
+      var days =[3,11,19,27,35];
       var fiveDay =$(".fiveDay");
-      fiveDay.html("<h2>" + "Five Day Forecast: " + "</h2>");
-      console.log(response);
+      
 
       for (i=0; i < days.length; i++){
-        var dayContainer = $("<div class='dayContainer col-2'>");
-        var city = $("<li>").text("City: " + response.city.name);
+        console.log(response);
+        var dayContainer = $("<div class='dayContainer'>");
+        var city = $("<p>").text(response.city.name);
+        var iconFD = response.list[i].weather[0].icon;
+        var imgSrcFD = "https://openweathermap.org/img/wn/" + iconFD + ".png";
+        var iconImgFD = $("<img>").attr("src", imgSrcFD);
+        iconImgFD.attr("alt", response.list[i].weather[0].main);
         var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
-        var temp = $("<li>").text("Temperature: " + tempF.toFixed(0) + " F");
-        var humidity = $("<li>").text("Humidity: " + response.list[i].main.humidity + "%");
-        dayContainer.append(city, temp, humidity);
+        var temp = $("<p>").text("Temperature: " + tempF.toFixed(0) + " F");
+        var humidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
+        dayContainer.append(city, iconImgFD, temp, humidity);
         fiveDay.append(dayContainer);
       }
     })
-   
 
   })
 
