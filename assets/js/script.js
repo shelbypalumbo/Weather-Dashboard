@@ -37,7 +37,7 @@ $(document).ready(function () {
 var lat = response.coord.lat;
 var lon = response.coord.lon;
 
-var queryURLUV = "http://api.openweathermap.org/data/2.5/uvi?appid=" + "6a120126c9f8309dcaf580415f4194b1" + "&lat=" + lat + "&lon=" + lon;
+var queryURLUV = "https://api.openweathermap.org/data/2.5/uvi?appid=" + "6a120126c9f8309dcaf580415f4194b1" + "&lat=" + lat + "&lon=" + lon;
 $.ajax({
   url: queryURLUV,
   method: "GET"
@@ -58,12 +58,9 @@ $.ajax({
       var days =[3,11,19,27,35];
       var fiveDay =$(".fiveDay");
       
-
       for (i=0; i < days.length; i++){
-        console.log(response.list[days[i]].dt_txt);
         var dayContainer = $("<div class='dayContainer'>");
         var dateF= response.list[days[i]].dt_txt;
-        var dateFi = $("<p>").text(dateF);
         var iconFD = response.list[days[i]].weather[0].icon;
         var imgSrcFD = "https://openweathermap.org/img/wn/" + iconFD + ".png";
         var iconImgFD = $("<img>").attr("src", imgSrcFD);
@@ -76,7 +73,6 @@ $.ajax({
 
       }
     })
-   
 
   })
 
