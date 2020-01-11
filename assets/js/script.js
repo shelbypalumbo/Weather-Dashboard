@@ -11,7 +11,7 @@ $(document).ready(function () {
     var queryURLCurrent = "https://api.openweathermap.org/data/2.5/weather?q=" +
       place + "&APPID=6a120126c9f8309dcaf580415f4194b1";
 
-    var pastPlace = $("<li class='.nav-item'>").html("<a>" + queryURLCurrent + "</a>");
+    var pastPlace = $("<li class='.nav-item'>").text(place);
     $(".nav-link").append(pastPlace);
    
 //-------Current Weather Conditions for place-------------------------------------------------
@@ -70,8 +70,10 @@ $.ajax({
         var humidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
         dayContainer.append(city, iconImgFD, temp, humidity);
         fiveDay.append(dayContainer);
+
       }
     })
+   
 
   })
 
