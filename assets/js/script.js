@@ -42,7 +42,9 @@ $.ajax({
   url: queryURLUV,
   method: "GET"
 }).then(function (response) {
-  $(".UV").text("  UV Index: " + response.value);})
+  $(".UV").text("  UV Index: " + response.value);
+})
+
 });
 
 //-------Five Day Forecast-------------------------------------------------------------------
@@ -58,17 +60,18 @@ $.ajax({
       
 
       for (i=0; i < days.length; i++){
-        console.log(response);
+        console.log(response.list[days[i]].dt_txt);
         var dayContainer = $("<div class='dayContainer'>");
-        var city = $("<p>").text(response.city.name);
-        var iconFD = response.list[i].weather[0].icon;
+        var dateF= response.list[days[i]].dt_txt;
+        var dateFi = $("<p>").text(dateF);
+        var iconFD = response.list[days[i]].weather[0].icon;
         var imgSrcFD = "https://openweathermap.org/img/wn/" + iconFD + ".png";
         var iconImgFD = $("<img>").attr("src", imgSrcFD);
-        iconImgFD.attr("alt", response.list[i].weather[0].main);
+        iconImgFD.attr("alt", response.list[days[i]].weather[0].main);
         var tempF = (response.list[i].main.temp - 273.15) * 1.80 + 32;
         var temp = $("<p>").text("Temperature: " + tempF.toFixed(0) + " F");
-        var humidity = $("<p>").text("Humidity: " + response.list[i].main.humidity + "%");
-        dayContainer.append(city, iconImgFD, temp, humidity);
+        var humidity = $("<p>").text("Humidity: " + response.list[days[i]].main.humidity + "%");
+        dayContainer.append(moment(dateF).format("ddd MMM D"), iconImgFD, temp, humidity);
         fiveDay.append(dayContainer);
 
       }

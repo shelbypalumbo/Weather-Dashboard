@@ -33,8 +33,8 @@ h2 {    color: #333333;
                 background-color: rgba(0, 217, 255, 0.842);
                 color: #ffffff;
     }
-.UV {   background-color: red;
-        color: #ffffff;
+.UV {   background-color:red;
+        color: white;
         width: 20%;
         border-radius: 20px;
         padding: 2px;
