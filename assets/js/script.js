@@ -5,11 +5,11 @@ $(document).ready(function () {
 //------Getting localStorage-----------------------------------------------------------------
   var pastPlacesString = localStorage.getItem("past-places");
   var pastPlacesArray = [];
-  var length = 10;
+ 
   if (pastPlacesString != null) {
     pastPlacesArray = pastPlacesString.split(",");
   }
-  for (i = 0; i < length; i++) {
+  for (i = 0; i < pastPlacesArray.length; i++) {
     var pastPlace = $("<li class='.nav-item'>").text(pastPlacesArray[i]);
     $(".nav-link").prepend(pastPlace);
   }
@@ -26,9 +26,10 @@ $(document).ready(function () {
 //--------Setting place input to localStorage--------------------------------------------------  
     pastPlacesArray.push(place);
     localStorage.setItem("past-places", pastPlacesArray);
+   
   })
 
-  //------On click event for  list items---------------------------------------------------------
+  //------On click event for list items---------------------------------------------------------
   $("li.nav-item").on("click", function (event) {
     event.preventDefault();
     $(".mainDash").show();
@@ -71,7 +72,6 @@ $(document).ready(function () {
       }).then(function (response) {
         $(".UV").text("  UV Index: " + response.value);
       })
-
     });
 
 //-------Five Day Forecast-------------------------------------------------------------------
@@ -103,5 +103,13 @@ $(document).ready(function () {
       }
     })
   }
+
+
+//------------Clear Past Searches------------------------------------------------------------------------
+$("#clearSearch").on("click", function (event) {
+  event.preventDefault();
+  localStorage.clear();
+  pastPlacesArray = 0;
+})
 
 })
