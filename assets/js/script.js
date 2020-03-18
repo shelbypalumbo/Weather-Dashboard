@@ -21,12 +21,12 @@ $(document).ready(function () {
     $(".mainDash").show();
     var place = $("#searchInput").val().trim();
     searchFunction(place);
-
+  
 
 //--------Setting place input to localStorage--------------------------------------------------  
     pastPlacesArray.push(place);
     localStorage.setItem("past-places", pastPlacesArray);
-   
+    
   })
 
   //------On click event for list items---------------------------------------------------------
@@ -110,6 +110,6 @@ $("#clearSearch").on("click", function (event) {
   event.preventDefault();
   localStorage.clear();
   pastPlacesArray = 0;
+  location.reload()
 })
-
 })
